@@ -4,6 +4,7 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 
+# calculate number of checkouts per month per material type
 checkouts_by_month <- data %>%
   group_by(checkout_date, MaterialType) %>%
   summarize(total_checkouts = sum(Checkouts, na.rm = TRUE))

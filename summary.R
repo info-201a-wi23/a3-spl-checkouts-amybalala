@@ -21,10 +21,11 @@ data_books <- data_rowling %>%
   filter(MaterialType == "BOOK")
 
 # How man books are listed under a creator other than J.K. Rowling?
-data_other <- data %>% 
+data_other <- data %>%
   filter(!Creator %in% c("Rowling, J. K."))
-  
-number_other <- data_other %>% filter(MaterialType =="BOOK") %>% 
+
+number_other <- data_other %>%
+  filter(MaterialType == "BOOK") %>%
   summarize(total_books = nrow(data_other))
 
 # How many books are listed under J.K. Rowling?
@@ -49,6 +50,7 @@ month_least_checkouts <- data_books %>%
 
 # Which book in the series has been checked out the most since the final book's publication?
 
+# Calculate the total number of checkouts for each book in the original Harry Potter series after the publication of the final book (Harry Potter and the Deathly Hallows, published July 2007)
 stone2 <- data_rowling %>%
   filter(str_detect(Title, regex("stone", ignore_case = TRUE))) %>%
   filter(checkout_date > "2007-07-01") %>%
@@ -93,8 +95,8 @@ prince2 <- data_rowling %>%
 
 book_counts <- rbind(stone2, chamber2, azkaban2, goblet2, phoenix2, prince2, hallows2)
 
-book_counts
-
+most_checkouts_all_time <- book_counts %>% 
+  filter(total_checkouts == max(total_checkouts))
 
 
 
