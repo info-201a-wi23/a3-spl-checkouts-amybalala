@@ -1,7 +1,10 @@
 library(dplyr)
+library(ggplot2)
+library(stringr)
+library(plotly)
 library(styler)
 
-data <- read.csv("C:/Users/balal/Documents/INFO201code/assignments/a3-spl-checkouts-amybalala/Checkouts_by_Title.csv")
+data <- read.csv("https://raw.githubusercontent.com/info-201a-wi23/a3-spl-checkouts-amybalala/main/Checkouts_by_Title.csv", stringsAsFactors = FALSE)
 
 # add a column with that pastes together the checkout month and year, with "01" as the default day
 
